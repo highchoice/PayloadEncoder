@@ -2,6 +2,7 @@ import argparse
 import urllib.parse
 import base64
 import sys
+import random
 
 # Define encoding functions
 def url_encode(payload):
@@ -9,8 +10,26 @@ def url_encode(payload):
 
 def partial_url_encode(payload):
     return payload.replace('(', '%28').replace(')', '%29').replace('<', '%3C').replace('>', '%3E')
+
 def html_entity_encode(payload):
     return ''.join(f'&#{ord(c)};' for c in payload)
+
+def mixed_html_entities_encode(payload):
+    # Encode only special characters with mixed HTML entities
+    special_chars = {
+        '<': '&#x3C;',
+        '>': '&#x3E;',
+        '&': '&#x26;',
+        '"': '&#x22;',
+        "'": '&#x27;'
+    }
+    result = []
+    for c in payload:
+        if c in special_chars:
+            result.append(special_chars[c])
+        else:
+            result.append(c)
+    return ''.join(result)
 
 def hex_encode(payload):
     return ''.join(f'\\x{ord(c):02x}' for c in payload)
@@ -57,6 +76,7 @@ encoding_functions = [
     url_encode,
     partial_url_encode,
     html_entity_encode,
+    mixed_html_entities_encode,
     hex_encode,
     base64_encode,
     double_url_encode,
