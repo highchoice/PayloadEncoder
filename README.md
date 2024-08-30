@@ -8,13 +8,13 @@ For Example: "<script>alert(1)</script>":
     Full URL encoding:
     
 ```
-%3Cscript%3Ealert%281%29%3C%2Fscript%3E
+%3C%73%63%72%69%70%74%3E%61%6C%65%72%74%28%31%29%3C%2F%73%63%72%69%70%74%3E
 ```
 Partial URL encoding (only encode specific characters):
 
 
 
-    <script>alert&#40;1&#41;</script>
+    %3Cscript%3Ealert%281%29%3C/script%3E
 
 2. HTML Entity Encoding
 
