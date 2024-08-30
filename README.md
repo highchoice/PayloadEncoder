@@ -1,4 +1,4 @@
-# PayloadEncoder
+# Payload Encoder
 Payload Encoder
 When trying to bypass Web Application Firewalls (WAFs) or filters, encoding and obfuscation techniques can help evade basic detection. Below are various methods to encode or obfuscate the payload 
 
