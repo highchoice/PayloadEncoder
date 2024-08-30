@@ -7,6 +7,9 @@ import sys
 def url_encode(payload):
     return urllib.parse.quote(payload)
 
+def partial_url_encode(payload):
+    return payload.replace('(', '%28').replace(')', '%29').replace('<', '%3C').replace('>', '%3E')
+
 def html_entity_encode(payload):
     return ''.join(f'&#{ord(c)};' for c in payload)
 
@@ -53,6 +56,7 @@ def alter_case(payload):
 # List of encoding functions
 encoding_functions = [
     url_encode,
+    partial_url_encode,
     html_entity_encode,
     hex_encode,
     base64_encode,
