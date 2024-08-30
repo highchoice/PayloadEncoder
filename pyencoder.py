@@ -5,11 +5,10 @@ import sys
 
 # Define encoding functions
 def url_encode(payload):
-    return urllib.parse.quote(payload)
+    return ''.join(f'%{ord(c):02X}' for c in payload)
 
 def partial_url_encode(payload):
     return payload.replace('(', '%28').replace(')', '%29').replace('<', '%3C').replace('>', '%3E')
-
 def html_entity_encode(payload):
     return ''.join(f'&#{ord(c)};' for c in payload)
 
