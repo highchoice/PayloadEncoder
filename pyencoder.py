@@ -107,6 +107,7 @@ def output_result(encoded_payloads, output_file=None):
             print(encoded)
 
 def main():
+    print(banner)
     parser = argparse.ArgumentParser(
         description="Encode payloads with various techniques to bypass WAF or filters."
     )
@@ -123,5 +124,17 @@ def main():
     elif args.list:
         encode_payloads_from_file(args.list, args.output)
 
-if __name__ == '__main__':
+banner = """
+             __                 __        __   
+            |__)  /\  \ / |    /  \  /\  |  \  
+            |    /~~\  |  |___ \__/ /~~\ |__/                                     
+             ___       __   __   __   ___  __  
+            |__  |\ | /  ` /  \ |  \ |__  |__) 
+            |___ | \| \__, \__/ |__/ |___ |  \ 
+
+"Encode payloads with various techniques to bypass WAF or filters."
+"""
+
+if __name__ == '__main__':    
     main()
+    
